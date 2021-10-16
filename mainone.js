@@ -31,7 +31,6 @@ function saveData (){
     sessionStorage.tiktoker = tiktoker
     var payment = document.getElementById("payment").value
     sessionStorage.payment = payment
-    window.location = "https://vietmrvu.github.io/form/"
 }
 function prefillData(){
     if(sessionStorage.firstname != null){
@@ -83,8 +82,8 @@ function prefillData(){
     }
 }
 function init (){
-    var button = document.getElementById("btn")
-    button.onclick = saveData; 
+    var form = document.getElementById("form")
+    form.onclick = saveData; 
     prefillData()
 }
 window.onload = init;
