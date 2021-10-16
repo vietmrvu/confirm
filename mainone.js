@@ -33,8 +33,8 @@ function saveData (){
     sessionStorage.payment = payment
 }
 function hard(){
-    window.location = "https://vietmrvu.github.io/form/"
     saveData()
+    window.location = "https://vietmrvu.github.io/form/"
 }
 function prefillData(){
     if(sessionStorage.firstname != null){
