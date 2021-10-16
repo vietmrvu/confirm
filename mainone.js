@@ -32,6 +32,10 @@ function saveData (){
     var payment = document.getElementById("payment").value
     sessionStorage.payment = payment
 }
+function hard(){
+    window.location = "https://vietmrvu.github.io/form/"
+    saveData()
+}
 function prefillData(){
     if(sessionStorage.firstname != null){
         document.getElementById("firstname").value = sessionStorage.firstname
@@ -83,7 +87,7 @@ function prefillData(){
 }
 function init (){
     var form = document.getElementById("form")
-    form.onsubmit = saveData; 
+    form.onsubmit = hard; 
     prefillData()
 }
 window.onload = init;
