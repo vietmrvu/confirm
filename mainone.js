@@ -86,8 +86,8 @@ function prefillData(){
     }
 }
 function init (){
-    var form = document.getElementById("form")
-    form.onsubmit = hard; 
+    var button = document.getElementById("btn")
+    button.onsubmit = hard; 
     prefillData()
 }
 window.onload = init;
