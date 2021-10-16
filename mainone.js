@@ -83,7 +83,7 @@ function prefillData(){
 }
 function init (){
     var form = document.getElementById("form")
-    form.onclick = saveData; 
+    form.onsubmit = saveData; 
     prefillData()
 }
 window.onload = init;
