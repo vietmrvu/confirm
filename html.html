@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-submit {
+            outline: none;
+            background-color: black;
+            margin-top: 12px;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: #fff;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 60px; 
+        }
+        body {
+            padding: 50px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .form-tt {
+            width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 55px 55px 37px;
+            background: linear-gradient(135deg, #008aff, #86d472);
+            background: -webkit-linear-gradient(135deg, #008aff, #86d472);
+            background: -o-linear-gradient(135deg, #008aff, #86d472);
+            background: -moz-linear-gradient(135deg, #008aff, #86d472);
+            text-align: center;
+        }
+        .form-tt h2 {
+            font-size: 30px;
+            color: #fff;
+            line-height: 1.2;
+            text-align: center;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .form-tt .input{
+            font-family: Poppins-Regular;
+            font-size: 16px;
+            color: #fff;
+            line-height: 1.2;
+            display: block;
+            width: calc(100% - 10px);
+            height: 45px;
+            background: none;
+            border-bottom: 2px solid rgba(255,255,255,.24)!important;
+            border: 0;
+            outline: 0;
+        }
+        .form-tt input:focus{
+            color: white;
+        }
+        .form-tt input[type=password] {
+            margin-bottom: 20px;
+        }
+        .form-tt input::placeholder {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <form class="form-tt" action="https://www.google.com/">
+        <h2>Check personal information</h2>
+        <input class="input" type="text" id="firstname" name="firstname" pattern="[A-Z]{1,15}" placeholder="Enter your first name, ex: JOBS" required/>
+        <input class="input" type="text" id="lastname" name="lastname" pattern="[A-Z]{1,15}" placeholder="Enter your last name, ex: Steve" required/>    
+        <input class="input" type="email" id="email" name="email" placeholder="Enter your email, ex: email@domain.com" required/>
+        <input class="input" type="text" id="age" name="age" pattern="^(((\d)|(\d\d)|(1[0-5][0-9]))|(150))$" placeholder="Enter your age, ex: 34" required/>
+        <input class="input" type="text" id="phone_number" name="phone_number"  pattern="^((\+84)|0)\d{9,10}$" placeholder="Enter your phone number, ex: 0909090909" required/>
+        <input type="submit" id="btn" class="form-submit" value="Submit"/>
+    </form>   
+    <script>
+        function saveData (){
+            var firstname = document.getElementById("firstname").value
+            var lastname = document.getElementById("lastname").value
+            var email = document.getElementById("email").value
+            var phone_number = document.getElementById("phone_number").value
+            var age = document.getElementById("age").value
+            sessionStorage.firstname = firstname  
+            sessionStorage.lastname = lastname 
+            sessionStorage.age = age
+            sessionStorage.email = email
+            sessionStorage.phone_number = phone_number
+        }	
+
+        function prefillData(){
+            if(sessionStorage.firstname != null){
+                document.getElementById("firstname").value = sessionStorage.firstname
+                document.getElementById("lastname").value = sessionStorage.lastname
+                document.getElementById("email").value = sessionStorage.email
+                document.getElementById("age").value = sessionStorage.age
+                document.getElementById("phone_number").value = sessionStorage.phone_number
+            }
+        }
+        function init (){
+            var form = document.getElementById("form")
+            form.onsubmit = saveData; 
+            var firstname_input = document.getElementById("firstname")
+            var lastname_input = document.getElementById("lastname")
+            var phone_number_input = document.getElementById("phone_number")
+            var age_input = document.getElementById("age")
+            firstname_input.oninvalid_input = function(event) {
+                event.target.setCustomValidity('Wrong! Your firstname must be similar the example');
+            }
+            lastname_input.oninvalid_input = function(event) {
+                event.target.setCustomValidity('Wrong! Your lastname must be similar the example');
+            }
+            phone_number_input.oninvalid_input = function(event) {
+                event.target.setCustomValidity('Wrong! Your phone_number must be similar the example');
+            }
+            age_input.oninvalid_input = function(event) {
+                event.target.setCustomValidity('Wrong! Your age must be similar the example');
+            }
+            prefillData()
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
