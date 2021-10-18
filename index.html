@@ -1,98 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
     <style>
-        *{
-            margin: 0;
-            padding: 0;
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+        * {
             box-sizing: border-box;
         }
-        body{
+        body {
+            background: #f6f5f7;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-        }
-        .form-submit {
-            outline: none;
-            background-color: black;
-            margin-top: 12px;
-            padding: 12px 16px;
-            font-weight: 600;
-            color: #fff;
-            border: none;
-            width: 100%;
-            font-size: 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 60px; 
-        }
-        body {
-            padding: 50px;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        .form-tt {
-            width: 600px;
-            border-radius: 10px;
-            overflow: hidden;
-            padding: 55px 55px 37px;
-            background: linear-gradient(135deg, #008aff, #86d472);
-            background: -webkit-linear-gradient(135deg, #008aff, #86d472);
-            background: -o-linear-gradient(135deg, #008aff, #86d472);
-            background: -moz-linear-gradient(135deg, #008aff, #86d472);
-            text-align: center;
-        }
-        .form-tt h2 {
-            font-size: 30px;
-            color: #fff;
-            line-height: 1.2;
-            text-align: center;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 30px;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            margin: -20px 0 50px;
         }
 
-        .form-tt .input{
-            font-family: Poppins-Regular;
-            font-size: 16px;
+        h1 {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+        }
+
+        span {
+            font-size: 12px;
+        }
+
+        a {
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+
+        button {
+            border-radius: 20px;
+            border: 1px solid linear-gradient(135deg, #008aff, #86d472);;
+            background-color: linear-gradient(135deg, #008aff, #86d472);;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+
+        form {
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+
+        input {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+        button{
+            background:rgba(0, 0, 0, 0.22)
+        }
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .container.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+        }
+
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .container.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: show 0.6s;
+        }
+
+        @keyframes show {
+            0%,
+            49.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+            50%,
+            100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .overlay {
+            background: linear-gradient(135deg, #008aff, #86d472);;
+            background: -webkit-linear-gradient(135deg, #008aff, #86d472);
+            background: linear-gradient(135deg, #008aff, #86d472);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #FFFFFF;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+
+        .container.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .container.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+
+        .social-container {
+            margin: 20px 0;
+        }
+
+        .social-container a {
+            border: 1px solid #DDDDDD;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+        }
+        #submit{
+            margin-top: 20px;
+            background-color:black;
+            padding:  20px 60px;
+        }
+        #submit a{
+            color:white;
+            text-decoration: none;
+        }
+        footer {
+            background-color: #222;
             color: #fff;
-            line-height: 1.2;
-            display: block;
-            width: calc(100% - 10px);
-            height: 45px;
-            background: none;
-            border-bottom: 2px solid rgba(255,255,255,.24)!important;
-            border: 0;
-            outline: 0;
+            font-size: 14px;
+            bottom: 0;
+            position: fixed;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 999;
         }
-        .form-tt input:focus{
-            color: white;
+
+        footer p {
+            margin: 10px 0;
         }
-        .form-tt input[type=password] {
-            margin-bottom: 20px;
+
+        footer i {
+            color: red;
         }
-        .form-tt input::placeholder {
-            color: #fff;
+
+        footer a {
+            color: #3c97bf;
+            text-decoration: none;
         }
-    </style>
+        
+</style>
 </head>
 <body>
-    <form class="form-tt" action="https://www.google.com/">
-        <h2>Check personal information</h2>
-        <input class="input" type="text" id="firstname" name="firstname" pattern="[A-Z]{1,15}" placeholder="Enter your first name, ex: JOBS" required/>
-        <input class="input" type="text" id="lastname" name="lastname" pattern="[A-Z]{1,15}" placeholder="Enter your last name, ex: Steve" required/>    
-        <input class="input" type="email" id="email" name="email" placeholder="Enter your email, ex: email@domain.com" required/>
-        <input class="input" type="text" id="age" name="age" pattern="^(((\d)|(\d\d)|(1[0-5][0-9]))|(150))$" placeholder="Enter your age, ex: 34" required/>
-        <input class="input" type="text" id="phone_number" name="phone_number"  pattern="^((\+84)|0)\d{9,10}$" placeholder="Enter your phone number, ex: 0909090909" required/>
-        <input type="submit" id="btn" class="form-submit" value="Submit"/>
-    </form>   
+    <h2>Check form</h2>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Second information</h1>
+                
+                <button class="save"> Save second information </button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="https://vutriviet.com">
+                <h1>Sign in the personal way</h1>
+                <input type="text" pattern="[A-Z]{1,15}"  id="firstname" placeholder="Enter your first name" title="This isn't the firstname, it's must be similar the example: JOBS" required/>
+                <input type="text" pattern="[A-Z]{1,15}" id="lastname" placeholder="Enter your last name" title="This isn't the lastname, it's must be similar the example: STEVE" required/>
+                <input type="email" placeholder="Enter your email" id="email"/>
+                <input class="input" type="text" id="age" name="age" pattern="^(((\d)|(\d\d)|(1[0-5][0-9]))|(150))$" placeholder="Enter your age" title="This isn't the years old name, it's must be similar the example: 23" required/>
+                <input class="input" type="text" id="phone_number" name="phone_number"  pattern="^((\+84)|0)\d{9,10}$" placeholder="Enter your phone number" title="This isn't the phone number name, it's must be similar the example: 0922222222" required/>
+                <button class="save" id="sub"> Save first information </button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Give more information</h1>
+                    <p>Enter more to chat in blog, it's interesting</p>
+                    <button class="ghost"  id="signIn">Go back</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Welcome!</h1>
+                    <p>If you can't sign in:</p>
+                    <button class="ghost" id="goback">Go back</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         function saveData (){
             var firstname = document.getElementById("firstname").value
@@ -106,7 +317,6 @@
             sessionStorage.email = email
             sessionStorage.phone_number = phone_number
         }	
-
         function prefillData(){
             if(sessionStorage.firstname != null){
                 document.getElementById("firstname").value = sessionStorage.firstname
@@ -116,28 +326,19 @@
                 document.getElementById("phone_number").value = sessionStorage.phone_number
             }
         }
+        function asy(){
+            window.location = "https://vutriviet.com"
+        }
         function init (){
-            var form = document.getElementById("form")
-            form.onsubmit = saveData; 
-            var firstname_input = document.getElementById("firstname")
-            var lastname_input = document.getElementById("lastname")
-            var phone_number_input = document.getElementById("phone_number")
-            var age_input = document.getElementById("age")
-            firstname_input.oninvalid_input = function(event) {
-                event.target.setCustomValidity('Wrong! Your firstname must be similar the example');
-            }
-            lastname_input.oninvalid_input = function(event) {
-                event.target.setCustomValidity('Wrong! Your lastname must be similar the example');
-            }
-            phone_number_input.oninvalid_input = function(event) {
-                event.target.setCustomValidity('Wrong! Your phone_number must be similar the example');
-            }
-            age_input.oninvalid_input = function(event) {
-                event.target.setCustomValidity('Wrong! Your age must be similar the example');
-            }
+            var goback = document.getElementById("goback")
+            goback.onclick = asy; 
+            var submit = document.getElementById("sub")
+            submit.onclick = saveData; 
             prefillData()
         }
         window.onload = init;
+            // <link rel="stylesheet" href="css.css"/>
+            // <script src="main.js"></ script>
     </script>
 </body>
 </html>
