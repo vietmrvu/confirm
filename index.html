@@ -279,11 +279,11 @@
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="https://vutriviet.com">
+            <form action="https://vietmrvu.github.io/blog/">
                 <h1>Sign in the personal way</h1>
                 <input type="text" pattern="[A-Z]{1,15}"  id="firstname" placeholder="Enter your first name" title="This isn't the firstname, it's must be similar the example: JOBS" required/>
                 <input type="text" pattern="[A-Z]{1,15}" id="lastname" placeholder="Enter your last name" title="This isn't the lastname, it's must be similar the example: STEVE" required/>
-                <input type="email" placeholder="Enter your email" id="email"/>
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="This isn't the email, it's must be similar the example: email@domain.com" placeholder="Enter your email" id="email"/>
                 <input class="input" type="text" id="age" name="age" pattern="^(((\d)|(\d\d)|(1[0-5][0-9]))|(150))$" placeholder="Enter your age" title="This isn't the years old name, it's must be similar the example: 23" required/>
                 <input class="input" type="text" id="phone_number" name="phone_number"  pattern="^((\+84)|0)\d{9,10}$" placeholder="Enter your phone number" title="This isn't the phone number name, it's must be similar the example: 0922222222" required/>
                 <button class="save" id="sub"> Save first information </button>
